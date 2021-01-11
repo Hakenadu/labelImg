@@ -10,7 +10,7 @@ import os
 here = os.path.abspath(os.path.dirname(__file__))
 NAME = 'labelImg'
 REQUIRES_PYTHON = '>=3.0.0'
-REQUIRED_DEP = ['pyqt5', 'lxml']
+REQUIRED_DEP = ['pyqt5', 'lxml', 'opencv-python', 'numpy', 'qimage2ndarray']
 about = {}
 
 with open(os.path.join(here, 'libs', '__init__.py')) as f:
@@ -22,15 +22,14 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-
 # OS specific settings
 SET_REQUIRES = []
 if _platform == "linux" or _platform == "linux2":
-   # linux
-   print('linux')
+    # linux
+    print('linux')
 elif _platform == "darwin":
-   # MAC OS X
-   SET_REQUIRES.append('py2app')
+    # MAC OS X
+    SET_REQUIRES.append('py2app')
 
 required_packages = find_packages()
 required_packages.append('labelImg')
@@ -41,10 +40,11 @@ OPTIONS = {
     'iconfile': 'resources/icons/app.icns'
 }
 
+
 class UploadCommand(Command):
     """Support setup.py upload."""
 
-    description=readme + '\n\n' + history,
+    description = readme + '\n\n' + history,
 
     user_options = []
 
